@@ -99,6 +99,8 @@ type Config struct {
 	SkipDirRegex *regexp.Regexp
 	// Optional: If the regex matches a glob, it will be skipped.
 	SkipDirGlob glob.Glob
+	// Optional: Skip files declared in .gitignore files in source repos.
+	UseGitignore bool
 	// Optional: stats allows to enter a metric hook. If left nil, no metrics will be recorded.
 	Stats stats.Collector
 	// Optional: Whether to read symlinks.
@@ -185,6 +187,7 @@ func InitWalkContext(ctx context.Context, config *Config, absScanRoots []*scalib
 		dirsToSkip:        pathStringListToMap(dirsToSkip),
 		skipDirRegex:      config.SkipDirRegex,
 		skipDirGlob:       config.SkipDirGlob,
+		useGitignore:      config.UseGitignore,
 		readSymlinks:      config.ReadSymlinks,
 		maxInodes:         config.MaxInodes,
 		inodesVisited:     0,
@@ -255,6 +258,7 @@ type walkContext struct {
 	dirsToSkip        map[string]bool // Anything under these paths should be skipped.
 	skipDirRegex      *regexp.Regexp
 	skipDirGlob       glob.Glob
+	useGitignore      bool
 	maxInodes         int
 	inodesVisited     int
 	dirsVisited       int
