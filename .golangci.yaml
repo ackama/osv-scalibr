@@ -101,6 +101,7 @@ linters-settings:
 
 issues:
   include:
+    - EXC0013 # revive package-comments
     - EXC0015 # revive package-comments
   max-issues-per-linter: 0
   max-same-issues: 0
