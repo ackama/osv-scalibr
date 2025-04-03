@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// fakelayerbuilder uses a yaml file with custom syntax to build up fake layers for testing
+// Package fakelayerbuilder uses a yaml file with custom syntax to build up fake layers for testing
 //
 // Example:
 //
